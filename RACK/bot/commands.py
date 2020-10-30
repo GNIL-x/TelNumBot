@@ -21,17 +21,19 @@ def analytics_message(message):
 
 @bot.message_handler(commands=['hack'])
 def hack(message):
-    bot.send_message(message.chat.id, 'Начинается взлом пентагона')
-    perc = 0
-    while perc < 100:
+    bot.send_message(message.chat.id, 'Взлом пентагона начался! 😎')
+    time.sleep(1)
+    x = 0
+    while x < 100:
+
         try:
-            text = "👮‍ Взлом пентагона в процессе ..." + str(perc) + "%"
-            bot.edit_message_text(text, message.chat.id, message.message_id + 1)
-            perc += random.randint(1, 3)
-            time.sleep(0.1)
+            bot.edit_message_text(f'Процесс взлома завершен на {x}%...', message.chat.id, message.message_id + 1)
+            time.sleep(0.3)
+            x += random.randint(1, 4)
         except:
             pass
-    bot.edit_message_text("🟢 Пентагон успешно взломан!", message.chat.id, message.message_id + 1)
+    bot.edit_message_text('Пентагон взломаааан! 😎', message.chat.id, message.message_id + 1)
+    bot.send_message(message.chat.id)
 
 
 @bot.message_handler(content_types=['text'])
